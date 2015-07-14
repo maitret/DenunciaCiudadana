@@ -27,6 +27,7 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
+$("#controles_principal").hide();
 
 //Demo: id_cliente = 5
 localStorage.setItem("id_cliente", "5");
@@ -71,29 +72,8 @@ window.load = onLoad();
 
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
-
-if (navigator.geolocation) {
-//navigator.geolocation.watchPosition(showPosition);
-navigator.geolocation.getCurrentPosition(showPosition2);
-} else {
-alert("Geolicalizacion no soportada.");
-}
-
-function showPosition2(position) {
-var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude;
-window.localStorage.setItem("User_Lat", position.coords.latitude);
-window.localStorage.setItem("User_Lon", position.coords.longitude);
-if(window.localStorage.getItem("geo_info_2") != geo_info) { } else {  }
-window.localStorage.setItem("geo_info_2", geo_info);
-window.localStorage.setItem("geo_aprox", position.coords.accuracy);
-//var d = new Date();
-
-//var info_log = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push");
-var info_log = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push");
-//var info_log = localStorage.setItem();
-$("#log").html(info_log);
-}
-
+$("#loading_principal").html("");
+$("#controles_principal").show();
 }
 
 </script>
@@ -118,7 +98,8 @@ $("#log").html(info_log);
 
 <div id="load_principal"></div>
 
-<div class="row">
+<div id="loading_principal">Cargando...</div>
+<div class="row" id="controles_principal">
 <div class="col-xs-6" align="left">
 <a id="btn_detener_alert" onclick="$.principal('accept');" class="btn btn-success">Detener <i class="fa fa-stop"></i> <i class="fa fa-bell"></i></a>
 </div>
