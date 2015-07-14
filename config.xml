@@ -57,8 +57,8 @@ Red de Denuncia Ciudadana en Linea
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
 
-<!-- <gap:plugin name="org.apache.cordova.geolocation" />-->
-<gap:plugin name="org.transistorsoft.cordova.background-geolocation" />
+<gap:plugin name="org.apache.cordova.geolocation" />
+<!-- <gap:plugin name="org.transistorsoft.cordova.background-geolocation" /> -->
 <gap:plugin name="com.phonegap.plugins.barcodescanner" />
 <gap:plugin name="com.phonegap.plugins.pushplugin" />
 <gap:plugin name="nl.x-services.plugins.socialsharing" />
