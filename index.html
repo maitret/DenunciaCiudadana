@@ -77,52 +77,44 @@ window.load = onLoad();
 <div class="navbar navbar-default navbar-fixed-top">
 <div class="container">
         <div class="navbar-header">
-          <a href="./index.html" class="navbar-brand">Noticias</a>
+          <a href="./index.html" class="navbar-brand">Denuncia Ciudadana</a>
           <!-- <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button> -->
         </div>
-<!--
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Cats <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
-                <li><a href="#" onclick="newsfeed('tecnologia');">Tecnologia</a></li>
-                <li><a href="#" onclick="newsfeed('deportes');">Deportes</a></li>
-                <li class="divider"></li>
-                <li><a href="#Y">Y</a></li>
-              </ul>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" target="_blank"></a></li>
-          </ul>
-
-        </div>
--->
 </div>
 </div>
+
+<br>
+<br>
 
 <div class="container page-header">
-<br>
+
+<div id="load_principal"></div>
+
+<div class="row">
+<div class="col-xs-6" align="left">
+<a id="btn_detener_alert" onclick="$.principal('accept');" class="btn btn-success">Detener Alerta <i class="fa fa-stop"></i> <i class="fa fa-bell"></i></a>
+</div>
+<div class="col-xs-6" align="right">
+<a id="btn_enviar_alert" onclick="$.principal('new');" class="btn btn-danger">Enviar Alerta <i class="fa fa-play"></i> <i class="fa fa-bell"></i></a>
+</div>
+</div>
+
 <br>
 
 <div id="log"></div>
-<hr>
-<div id="load_principal"></div>
-
-<a id="btn_enviar_alert" class="btn btn-danger">Enviar Alerta</a>
-<a id="btn_detener_alert" class="btn btn-success">Detener Alerta</a>
 
 </div>
+
+
 <script type="text/javascript">
 app.initialize();
 </script>
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
