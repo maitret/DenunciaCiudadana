@@ -72,7 +72,19 @@ window.load = onLoad();
 
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
-localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
+
+if (navigator.geolocation) {
+//navigator.geolocation.watchPosition(showPosition);
+navigator.geolocation.getCurrentPosition(showPosition);
+} else {
+//alert("Geolicalizacion no soportada.");
+}
+function showPosition(position) {
+var geo_info = "lat=" + position.coords.latitude + "&lon=" + position.coords.longitude;
+localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push"));
+
+}
+
 $("#loading_principal").html("");
 $("#controles_principal").show();
 }
