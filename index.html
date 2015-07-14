@@ -71,9 +71,28 @@ window.load = onLoad();
 
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
-var info_log = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push");
-//localStorage.setItem();
+/*
+if (navigator.geolocation) {
+//navigator.geolocation.watchPosition(showPosition);
+navigator.geolocation.getCurrentPosition(showPosition2);
+} else {
+alert("Geolicalizacion no soportada.");
+}
+
+function showPosition2(position) {
+var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude;
+window.localStorage.setItem("User_Lat", position.coords.latitude);
+window.localStorage.setItem("User_Lon", position.coords.longitude);
+if(window.localStorage.getItem("geo_info_2") != geo_info) { } else {  }
+window.localStorage.setItem("geo_info_2", geo_info);
+window.localStorage.setItem("geo_aprox", position.coords.accuracy);
+//var d = new Date();
+
+var info_log = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push");
+//var info_log = localStorage.setItem();
 $("#log").html(info_log);
+}
+*/
 }
 
 </script>
