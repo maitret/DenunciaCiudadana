@@ -38,7 +38,7 @@ try
 pushNotification = window.plugins.pushNotification;
 if (device.platform == 'android' || device.platform == 'Android') {
 $("#app-status-ul").append('<li>registering android</li>');
-pushNotification.register(successHandler, errorHandler, {"senderID":"417600078405","ecb":"onNotificationGCM"});     // required!
+pushNotification.register(successHandler, errorHandler, {"senderID":"572963739426","ecb":"onNotificationGCM"});     // required!
 } else {
 $("#app-status-ul").append('<li>registering iOS</li>');
 pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});    // required!

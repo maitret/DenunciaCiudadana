@@ -12,7 +12,7 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Noticias</title>
+<title>Denuncia Ciudadana</title>
 
 <script type="text/javascript" src="cordova.js"></script>
 
@@ -28,107 +28,34 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
 
-$.newsfeed = function(cat){
+//Demo: id_cliente = 5
+localStorage.setItem("id_cliente", "5");
 
-$("#load_notas").html('<div align="center"><h2><i class="fa fa-refresh fa-spin"></i></h2></div>');
+$.principal = function(action){
 
-$.notas_template_nointernet = function() {
-$("#load_notas").html("No se detecto conexion a internet, reintente nuevamente");
-}
+$("#load_principal").html('<div align="center"><h2><i class="fa fa-refresh fa-spin"></i></h2></div>');
 
-$.notas_template = function(j){
-var data_cat = j['cat'];
-if(data_cat != ""){
-//localStorage.setItem(data_cat, JSON.stringify(j));
-j = JSON.parse(localStorage.getItem(data_cat));
-} else {
-//localStorage.setItem("notas", JSON.stringify(j));
-j = JSON.parse(localStorage.getItem("notas"));
-}
-var data_ajax = j['notas'];
-var options1 = ''; var options2 = '';
-var count_data_ajax = data_ajax.length;
-	if(data_cat != ""){
-	var onclick = "$.newsfeed('"+data_cat+"');";
-	$("#news_title").html('<a href="#" onclick'+'="'+onclick+'">'+data_cat+' (' + count_data_ajax + ') <i class="fa fa-refresh"></i></a>');
-	} else {
-	var onclick = "$.newsfeed('');";
-	$("#news_title").html('<a href="#" onclick'+'="'+onclick+'">Noticias (' + count_data_ajax + ') <i class="fa fa-refresh"></i></a>');
-	}
-			for (var i = 0; i < count_data_ajax; i++) {
-				if (data_ajax[i].valor != "") {
-					var onclick_nota = "$.load_nota("+data_ajax[i].id+")";
-
-			var fecha = data_ajax[i]['FechaHoraPub'];
-			var dateVal = "/Date(" + fecha + "000)/";
-			var date = new Date(parseFloat(dateVal.substr(6)));
-			var fecha_print = "" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + "";
-
-			options2 += '' +
-			'<div class="media"><div class="media-left"><a href="#" onclick'+'="'+onclick_nota+'"><img class="media-object" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNGU4MjQzMzljOSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE0ZTgyNDMzOWM5Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="></a></div>' +
-			'<div class="media-body"><h5 class="media-heading"><a href="#" onclick'+'="'+onclick_nota+'">' + data_ajax[i].Titulo + '</a></h5>' +
-			'' + data_ajax[i].Cuerpo + '' +
-			'<br><small class="text-muted"><em>' + data_ajax[i].Cat + '</em> ' + fecha_print + '</small>' +
-			'</div></div>';
-				}
-			}
-$("#load_notas").html(options1 + options2);
+$.nointernet = function() {
+$("#load_principal").html("No se detecto conexion a internet, reintente nuevamente");
 }
 
 if(navigator.onLine)
 {
 var info_cliente = localStorage.getItem("info_cliente");
-$.getJSON("https://myhostmx.azurewebsites.net/get_notas.ajax.php", {cat: cat, cliente: info_cliente, ajax: 'true'}, function (j) {
-var data_cat = j['cat'];
-if(data_cat != ""){
-localStorage.setItem(data_cat, JSON.stringify(j));
-} else {
-localStorage.setItem("notas", JSON.stringify(j));
-}
-$.notas_template(j);
+var id_cliente = localStorage.getItem("id_cliente");
+$.getJSON("http://mensajerus.com/pe/code/mobile_apps.php", {id_cliente: id_cliente, action: action, cliente: info_cliente, ajax: 'true'}, function (j) {
+var data_respuesta = j['respuesta'];
+$("#load_principal").html(data_respuesta);
+//$.template_respose(j);
 });
 }
 else {
-var j = JSON.parse(localStorage.getItem("notas"));
-$.notas_template(j);
-}
 
 }
 
-window.load = $.newsfeed("");
-
-$.load_nota = function(id_nota) {
-if(navigator.onLine) {
-	if (id_nota != "") {
-		var nota = '';
-		$.getJSON("https://myhostmx.azurewebsites.net/get_nota.ajax.php", {
-			id_nota: id_nota,
-			ajax: 'true'
-		}, function (j) {
-			var data_ajax = j['nota'][0];
-			var data_cat = j['cat'];
-			var count_data_ajax = data_ajax.length;
-			var titulo = data_ajax['Titulo'];
-			var cuerpo = data_ajax['Cuerpo'];
-
-			var fecha = data_ajax['FechaHoraPub'];
-			var dateVal = "/Date(" + fecha + "000)/";
-			var date = new Date(parseFloat(dateVal.substr(6)));
-			var fecha_print = "" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + "";
-
-			var share_button = "<div class='pull-right'><button class='btn btn-primary btn-sm' onclick=\"window.plugins.socialsharing.share('" + titulo + "', null, null, 'http://myhostmx.azurewebsites.net/nota/" + id_nota + "')\">Compartir</button></div>";
-			nota += '<h5>' + titulo + '</h5>' +
-			'' + share_button + '<br>' +
-			'<small>' + fecha_print + '</small>' +
-			'<p class="text-justify">' + cuerpo + '</p>' + '';
-			$("#load_notas").html(nota);
-		});
-	}
-} else {
-$.notas_template_nointernet()
 }
 
-}
+window.load = $.principal("");
 
 
 function onLoad() {
@@ -138,11 +65,11 @@ function onDeviceReady() {
 document.addEventListener("backbutton", onBackKeyDown, false);
 }
 function onBackKeyDown() {
-var j = JSON.parse(localStorage.getItem("notas"));
-$.notas_template(j);
-alert("back");
+//var j = JSON.parse(localStorage.getItem("notas"));
+//$.notas_template(j);
+//alert("back");
 }
-window.load = onload;
+window.load = onLoad();
 
 });
 </script>
@@ -184,21 +111,12 @@ window.load = onload;
 <br>
 <br>
 
-<div align="center">
-<div class="btn-group">
-  <a href="#" class="btn btn-default" id="news_title" style="text-decoration: none;">Noticias</a>
-  <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
-  <ul class="dropdown-menu">
-<li><a href="#" onclick="$.newsfeed('tecnologia');">Tecnologia</a></li>
-<li><a href="#" onclick="$.newsfeed('deportes');">Deportes</a></li>
-<li><a href="#" onclick="$.newsfeed('cultura');">Cultura</a></li>
-</ul>
-</div>
-</div>
-
 <div id="log"></div>
 <hr>
-<div id="load_notas"></div>
+<div id="load_principal"></div>
+
+<a id="btn_enviar_alert" class="btn btn-danger">Enviar Alerta</a>
+<a id="btn_detener_alert" class="btn btn-success">Detener Alerta</a>
 
 </div>
 <script type="text/javascript">
