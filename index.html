@@ -40,6 +40,7 @@ $("#load_principal").html("No se detecto conexion a internet, reintente nuevamen
 }
 
 if(navigator.onLine) {  } else {  }
+
 var info_cliente = localStorage.getItem("info_cliente");
 var id_cliente = localStorage.getItem("id_cliente");
 $.getJSON("http://mensajerus.com/pe/code/mobile_apps.php", {id_cliente: id_cliente, action: action, cliente: info_cliente, ajax: 'true'}, function (j) {
@@ -52,8 +53,6 @@ $("#load_principal").html(data_respuesta);
 }
 
 window.load = $.principal("");
-
-
 
 function onLoad() {
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -69,6 +68,14 @@ function onBackKeyDown() {
 window.load = onLoad();
 
 });
+
+document.addEventListener("deviceready", GetDeviceInfo, false);
+function GetDeviceInfo() {
+var info_log = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push");
+//localStorage.setItem();
+$("#log").html(info_log);
+}
+
 </script>
 
 <div class="navbar navbar-default navbar-fixed-top">

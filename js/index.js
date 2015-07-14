@@ -8,11 +8,17 @@ var app = {
     },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+
+
+
+
     },
 receivedEvent: function(id) {
 console.log('Received Event: ' + id);
     }
 };
+
 var pushNotification;
 function onDeviceReadyPush() {
 $("#app-status-ul").append('<li>deviceready event received</li>');
