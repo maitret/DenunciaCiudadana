@@ -39,8 +39,7 @@ $.nointernet = function() {
 $("#load_principal").html("No se detecto conexion a internet, reintente nuevamente");
 }
 
-if(navigator.onLine)
-{
+if(navigator.onLine) {  } else {  }
 var info_cliente = localStorage.getItem("info_cliente");
 var id_cliente = localStorage.getItem("id_cliente");
 $.getJSON("http://mensajerus.com/pe/code/mobile_apps.php", {id_cliente: id_cliente, action: action, cliente: info_cliente, ajax: 'true'}, function (j) {
@@ -48,10 +47,7 @@ var data_respuesta = j['respuesta'];
 $("#load_principal").html(data_respuesta);
 //$.template_respose(j);
 });
-}
-else {
 
-}
 
 }
 
