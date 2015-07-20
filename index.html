@@ -89,7 +89,7 @@ window.load = onLoad();
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
 
-if (navigator.geolocation) {
+if(navigator.geolocation) {
 //navigator.geolocation.watchPosition(showPosition);
 navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccuracy: true });
 } else {
@@ -150,7 +150,7 @@ $(document).ready(function() {
 <div id="log"></div>
 
 <br><br>
-
+<label>id_cliente: </label>
 <input type="text" class="form-control" id="Cambia_Id_Cliente" placeholder="id_cliente">
 
 </div>
