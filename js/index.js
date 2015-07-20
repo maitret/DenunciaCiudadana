@@ -150,7 +150,7 @@ navigator.geolocation.getCurrentPosition(showPosition);
 }
 
 function showPosition(position) {
-var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude + "&alt="+ position.coords.altitude + "&acc="+ position.coords.accuracy + "&alt_acc="+ position.coords.altitudeAccuracy + "&heading="+ position.coords.heading + "&speed="+ position.coords.speed + "&pos_time="+ position.timestamp + "";
+var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude + "&alt="+ position.coords.altitude + "&pos_acc="+ position.coords.accuracy + "&pos_altacc="+ position.coords.altitudeAccuracy + "&pos_heading="+ position.coords.heading + "&pos_speed="+ position.coords.speed + "&pos_time="+ position.timestamp + "";
 window.localStorage.setItem("User_Lat", position.coords.latitude);
 window.localStorage.setItem("User_Lon", position.coords.longitude);
 if(window.localStorage.getItem("geo_info_2") != geo_info) {

@@ -27,10 +27,25 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
-$("#controles_principal").hide();
 
 //Demo: id_cliente = 5
+var id_cliente_1 = localStorage.getItem("id_cliente");
+if(id_cliente_1 == null){
 localStorage.setItem("id_cliente", "5");
+}
+else {  }
+
+$("#Cambia_Id_Cliente").keyup(function(){
+var valor_actual = $(this).val();
+//alert(valor_actual);
+localStorage.setItem("id_cliente", valor_actual);
+});
+
+$("#Cambia_Id_Cliente").val(localStorage.getItem("id_cliente"));
+
+$("#controles_principal").hide();
+
+
 
 $.principal = function(action){
 
@@ -53,7 +68,7 @@ $("#load_principal").html(data_respuesta);
 
 };
 
-window.load = $.principal("");
+window.load = $.principal("new");
 
 function onLoad() {
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -95,6 +110,9 @@ $("#loading_principal").html("");
 $("#controles_principal").show();
 }
 
+$(document).ready(function() {
+
+});
 </script>
 
 <div class="navbar navbar-default navbar-fixed-top">
@@ -131,8 +149,11 @@ $("#controles_principal").show();
 
 <div id="log"></div>
 
-</div>
+<br><br>
 
+<input type="text" class="form-control" id="Cambia_Id_Cliente" placeholder="id_cliente">
+
+</div>
 
 <script type="text/javascript">
 app.initialize();
