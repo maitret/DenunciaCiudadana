@@ -74,7 +74,7 @@ function onLoad() {
 document.addEventListener("deviceready", onDeviceReady, false);
 }
 function onDeviceReady() {
-document.addEventListener("backbutton", onBackKeyDown, false);
+//document.addEventListener("backbutton", onBackKeyDown, false);
 }
 function onBackKeyDown() {
 //var j = JSON.parse(localStorage.getItem("notas"));
@@ -101,11 +101,10 @@ localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.pl
 }
 
 function onError(error) {
-//alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 var geo_info = "pos_ec=" + error.code + "&pos_em=" + error.message + "";
 localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&token_push="+localStorage.getItem("token_push"));
 }
-
 
 $("#loading_principal").html("");
 $("#controles_principal").show();

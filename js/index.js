@@ -141,7 +141,7 @@ $("#app-status-ul").append('<li>error:'+ error +'</li>');
 }
 document.addEventListener('deviceready', onDeviceReadyPush, true);
 
-
+/*
 if (navigator.geolocation) {
 //navigator.geolocation.watchPosition(showPosition);
 navigator.geolocation.getCurrentPosition(showPosition);
@@ -156,20 +156,22 @@ window.localStorage.setItem("User_Lon", position.coords.longitude);
 if(window.localStorage.getItem("geo_info_2") != geo_info) {
 window.localStorage.setItem("geo_info_2", geo_info);
 window.localStorage.setItem("geo_aprox", position.coords.accuracy);
-/* $('.De').val(position.coords.accuracy+" N: " +geo_info_2);
-$('.A').val("t:"+position.timestamp); */
+//$('.De').val(position.coords.accuracy+" N: " +geo_info_2);
+//$('.A').val("t:"+position.timestamp);
 }
 else {
-/* $('.De').val(position.coords.accuracy+" S: " +geo_info);
-$('.A').val("t:"+position.timestamp); */
+// $('.De').val(position.coords.accuracy+" S: " +geo_info);
+//$('.A').val("t:"+position.timestamp);
 }
 var d = new Date();
 }
+*/
+
 
 if(typeof(device) !== "undefined") {
-localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
+//localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+window.localStorage.getItem("geo_info_2")+"&token_push="+localStorage.getItem("token_push"));
 } else {
-localStorage.setItem("info_cliente", "&"+window.localStorage.getItem("geo_info_2")+"");
+//localStorage.setItem("info_cliente", "&"+window.localStorage.getItem("geo_info_2")+"");
 }
 
 /*
