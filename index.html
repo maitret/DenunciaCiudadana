@@ -68,7 +68,6 @@ var info_cliente = "&uuid="+device.uuid+"&platform="+device.platform+"&version="
 localStorage.setItem("info_cliente", info_cliente);
 
     if (!position.coords) return;
-
     markersRef.child(myUuid).set({
 	id_cliente_1: id_cliente_1,
       coords: {
@@ -124,6 +123,11 @@ $("#load_principal").html(data_respuesta);
 //$.template_respose(j);
 });
 
+if(action === "accept"){
+    markersRef.child(myUuid).set({
+	alerta: '0'
+    })
+}
 
 };
 
