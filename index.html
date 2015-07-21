@@ -25,7 +25,30 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 </head>
 <body>
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
+
+document.addEventListener("deviceready", GetDeviceInfo, false);
+function GetDeviceInfo() {
+if(navigator.geolocation) {
+//navigator.geolocation.watchPosition(showPosition);
+navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccuracy: true });
+} else {
+//alert("Geolicalizacion no soportada.");
+}
+function showPosition(position) {
+var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude + "&alt="+ position.coords.altitude + "&pos_acc="+ position.coords.accuracy + "&pos_altacc="+ position.coords.altitudeAccuracy + "&pos_heading="+ position.coords.heading + "&pos_speed="+ position.coords.speed + "&pos_time="+ position.timestamp + "";
+localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push"));
+}
+function onError(error) {
+alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+var geo_info = "pos_ec=" + error.code + "&pos_em=" + error.message + "";
+localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&token_push="+localStorage.getItem("token_push"));
+}
+
+$("#loading_principal").html("");
+$("#controles_principal").show();
+}
+
 $(document).ready(function() {
 
 //Demo: id_cliente = 5
@@ -77,38 +100,11 @@ function onDeviceReady() {
 //document.addEventListener("backbutton", onBackKeyDown, false);
 }
 function onBackKeyDown() {
-//var j = JSON.parse(localStorage.getItem("notas"));
-//$.notas_template(j);
-//alert("back");
 location.reload(true);
 }
 window.load = onLoad();
 
 });
-
-document.addEventListener("deviceready", GetDeviceInfo, false);
-function GetDeviceInfo() {
-
-if(navigator.geolocation) {
-//navigator.geolocation.watchPosition(showPosition);
-navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccuracy: true });
-} else {
-//alert("Geolicalizacion no soportada.");
-}
-function showPosition(position) {
-var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude + "&alt="+ position.coords.altitude + "&pos_acc="+ position.coords.accuracy + "&pos_altacc="+ position.coords.altitudeAccuracy + "&pos_heading="+ position.coords.heading + "&pos_speed="+ position.coords.speed + "&pos_time="+ position.timestamp + "";
-localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push"));
-}
-
-function onError(error) {
-alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-var geo_info = "pos_ec=" + error.code + "&pos_em=" + error.message + "";
-localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&token_push="+localStorage.getItem("token_push"));
-}
-
-$("#loading_principal").html("");
-$("#controles_principal").show();
-}
 
 $(document).ready(function() {
 
