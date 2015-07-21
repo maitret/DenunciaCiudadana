@@ -64,6 +64,7 @@ navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccu
 }
 function showPosition(position) {
 var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude + "&alt="+ position.coords.altitude + "&pos_acc="+ position.coords.accuracy + "&pos_altacc="+ position.coords.altitudeAccuracy + "&pos_heading="+ position.coords.heading + "&pos_speed="+ position.coords.speed + "&pos_time="+ position.timestamp + "";
+localStorage.setItem("geo_info", geo_info);
 var info_cliente = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push");
 localStorage.setItem("info_cliente", info_cliente);
 
@@ -78,8 +79,9 @@ localStorage.setItem("info_cliente", info_cliente);
       geo_info: geo_info,
       info_cliente: info_cliente,
       timestamp: Math.floor(Date.now() / 1000)
-    })
-
+    });
+window.localStorage.setItem("User_Lat", position.coords.latitude);
+window.localStorage.setItem("User_Lon", position.coords.longitude);
 }
 function onError(error) {
 alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
@@ -124,8 +126,20 @@ $("#load_principal").html(data_respuesta);
 });
 
 if(action === "accept"){
+var User_Lat = localStorage.getItem("User_Lat");
+var User_Lon = localStorage.getItem("User_Lon");
+var geo_info = localStorage.getItem("geo_info");
+
     markersRef.child(myUuid).set({
-	alerta: '0'
+	id_cliente_1: id_cliente_1,
+      coords: {
+        latitude: User_Lat,
+        longitude: User_Lon
+      },
+	alerta: '0',
+      geo_info: geo_info,
+      info_cliente: info_cliente,
+      timestamp: Math.floor(Date.now() / 1000)
     })
 }
 
