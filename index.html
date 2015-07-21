@@ -58,7 +58,8 @@ navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccu
 }
 function showPosition(position) {
 var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude + "&alt="+ position.coords.altitude + "&pos_acc="+ position.coords.accuracy + "&pos_altacc="+ position.coords.altitudeAccuracy + "&pos_heading="+ position.coords.heading + "&pos_speed="+ position.coords.speed + "&pos_time="+ position.timestamp + "";
-localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push"));
+var info_cliente = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push");
+localStorage.setItem("info_cliente", info_cliente);
 
     if (!position.coords) return;
 
@@ -67,6 +68,8 @@ localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.pl
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       },
+      geo_info: geo_info,
+      info_cliente: info_cliente,
       timestamp: Math.floor(Date.now() / 1000)
     })
 
