@@ -27,6 +27,14 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 <body>
 
 <script type="text/javascript">
+
+//Demo: id_cliente = 5
+var id_cliente_1 = localStorage.getItem("id_cliente");
+if(id_cliente_1 == null){
+localStorage.setItem("id_cliente", "5");
+}
+else {  }
+
 // Utilities
 function guid() {
   function s4() {
@@ -46,8 +54,6 @@ var firebase = new Firebase('https://burning-inferno-2921.firebaseio.com/');
 var markersRef = firebase.child('maps/demo');
 var markers = {};
 
-
-
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
 if(navigator.geolocation) {
@@ -64,6 +70,7 @@ localStorage.setItem("info_cliente", info_cliente);
     if (!position.coords) return;
 
     markersRef.child(myUuid).set({
+	id_cliente_1: id_cliente_1,
       coords: {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
@@ -85,13 +92,6 @@ $("#controles_principal").show();
 }
 
 $(document).ready(function() {
-
-//Demo: id_cliente = 5
-var id_cliente_1 = localStorage.getItem("id_cliente");
-if(id_cliente_1 == null){
-localStorage.setItem("id_cliente", "5");
-}
-else {  }
 
 $("#Cambia_Id_Cliente").keyup(function(){
 var valor_actual = $(this).val();
