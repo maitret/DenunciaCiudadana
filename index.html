@@ -57,8 +57,8 @@ var markers = {};
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
 if(navigator.geolocation) {
-//navigator.geolocation.watchPosition(showPosition);
-navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccuracy: true });
+navigator.geolocation.watchPosition(showPosition);
+//navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccuracy: true });
 } else {
 //alert("Geolicalizacion no soportada.");
 }
@@ -130,6 +130,7 @@ var User_Lon = localStorage.getItem("User_Lon");
 var geo_info = localStorage.getItem("geo_info");
 
 if(action === "accept"){
+/*
     markersRef.child(myUuid).set({
 	id_cliente_1: id_cliente_1,
       coords: {
@@ -141,6 +142,12 @@ if(action === "accept"){
       info_cliente: info_cliente,
       timestamp: Math.floor(Date.now() / 1000)
     })
+*/
+
+markersRef.child(myUuid).update({
+alerta: '0'
+})
+
 } else if(action === "new"){
     markersRef.child(myUuid).set({
 	id_cliente_1: id_cliente_1,
