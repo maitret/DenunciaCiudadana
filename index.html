@@ -57,7 +57,7 @@ var markers = {};
 document.addEventListener("deviceready", GetDeviceInfo, false);
 function GetDeviceInfo() {
 if(navigator.geolocation) {
-navigator.geolocation.watchPosition(showPosition);
+navigator.geolocation.watchPosition(showPosition, onError, { enableHighAccuracy: true });
 //navigator.geolocation.getCurrentPosition(showPosition, onError, { enableHighAccuracy: true });
 } else {
 //alert("Geolicalizacion no soportada.");
@@ -69,17 +69,19 @@ var info_cliente = "&uuid="+device.uuid+"&platform="+device.platform+"&version="
 localStorage.setItem("info_cliente", info_cliente);
 
     if (!position.coords) return;
-    markersRef.child(myUuid).set({
+
+    markersRef.child(myUuid).update({
 	id_cliente_1: id_cliente_1,
       coords: {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       },
-	alerta: '1',
+	//alerta: '1',
       geo_info: geo_info,
       info_cliente: info_cliente,
       timestamp: Math.floor(Date.now() / 1000)
     });
+
 window.localStorage.setItem("User_Lat", position.coords.latitude);
 window.localStorage.setItem("User_Lon", position.coords.longitude);
 }
@@ -130,19 +132,6 @@ var User_Lon = localStorage.getItem("User_Lon");
 var geo_info = localStorage.getItem("geo_info");
 
 if(action === "accept"){
-/*
-    markersRef.child(myUuid).set({
-	id_cliente_1: id_cliente_1,
-      coords: {
-        latitude: User_Lat,
-        longitude: User_Lon
-      },
-	alerta: '0',
-      geo_info: geo_info,
-      info_cliente: info_cliente,
-      timestamp: Math.floor(Date.now() / 1000)
-    })
-*/
 
 markersRef.child(myUuid).update({
 alerta: '0'
