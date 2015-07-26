@@ -67,11 +67,13 @@ Red de Denuncia Ciudadana en Linea
 <!-- Solo android: Envia y Recibe -->
 <!-- <gap:plugin name="tr.bel.mamak.sms_plagin" />-->
 
+
 <gap:plugin name="plugin.google.maps.menusito" version="1.2.5" >
 <param name="API_KEY_FOR_ANDROID" value="AIzaSyCTQh6x95FlAAjVoPOTI7gF6O_ZLxPWGlI" />
 <param name="API_KEY_FOR_IOS" value="AIzaSyD7iHJwl2w-rPwd7McQVBtyciUl-LK3FlM" />
 </gap:plugin>
 
+<!-- -->
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--

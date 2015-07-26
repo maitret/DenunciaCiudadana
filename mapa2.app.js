@@ -58,12 +58,13 @@ User_Lat = window.coords_lat;
 User_Lon = window.coords_lon;
 } 
 
+/*
 document.addEventListener("deviceready", function() {
 map = plugin.google.maps.Map.getMap(document.getElementById("map"));
 map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
 }, false);
 function onMapReady() { alert("Mapa Listo"); }
-
+*/
 
 function initialize() { 
 var GetLatLon_F_DU = new google.maps.LatLng(User_Lat, User_Lon);
@@ -77,6 +78,7 @@ center: centerMap
 };
 
 //map = new google.maps.Map(document.getElementById("map"), myOptions);
+map = plugin.google.maps.Map.getMap(document.getElementById("map"), myOptions);
 
 infowindow = new google.maps.InfoWindow({
 maxWidth: 500,
