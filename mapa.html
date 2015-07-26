@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!--
+WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<!--
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denuncia Ciudadana</title>
+
+<link href="css/bootstrap.new.css" rel="stylesheet">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script src="js/purl.js"></script>
+<script type="text/javascript" src="js/firebase.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&sensor=true&region=mx&language=es&lang=es&libraries=places,geometry,visualization"></script>
+
+<style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      position: absolute;
+      top: 50px;
+      bottom: 0;
+      width: 100%;
+    }
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+</style> 
+</head>
+<body>
+
+<a href="#" onclick="libera_localstorage();" class="btn btn-default">Libera Cache de Clientes</a> A veces es necesario volver a refrescar la pagina.
+
+<div id="map"></div>
+
+<script src="mapa.config.js"></script>
+<script src="mapa2.app.js"></script>
+
+<audio id="alarmAudio" src="alarm.mp3" loop>
+Your browser does not support the audio element.
+</audio>
+
+  </body>
+</html>
