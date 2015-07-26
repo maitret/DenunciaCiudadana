@@ -58,13 +58,11 @@ User_Lat = window.coords_lat;
 User_Lon = window.coords_lon;
 } 
 
-
-map = plugin.google.maps.Map.getMap(document.getElementById("map"), myOptions);
+document.addEventListener("deviceready", function() {
+map = plugin.google.maps.Map.getMap(document.getElementById("map"));
 map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
-
-function onMapReady() {
-alert("Mapa Listo");
-}
+}, false);
+function onMapReady() { alert("Mapa Listo"); }
 
 
 function initialize() { 
