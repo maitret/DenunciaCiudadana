@@ -84,8 +84,6 @@ function onMapReady() {
 alert("Mapa Listo");
 }
 
-
-
 var MycontentString = '<div id="content">'+
 '<div id="siteNotice">'+
 '</div>'+
