@@ -63,13 +63,22 @@ Define a specific version of PhoneGap to build into your app.
 <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
 <gap:plugin name="nl.x-services.plugins.socialsharing" />
 
+<gap:plugin name="plugin.google.maps.menusito" version="1.2.5" >
+<param name="API_KEY_FOR_ANDROID" value="AIzaSyCTQh6x95FlAAjVoPOTI7gF6O_ZLxPWGlI" />
+<param name="API_KEY_FOR_IOS" value="AIzaSyD7iHJwl2w-rPwd7McQVBtyciUl-LK3FlM" />
+</gap:plugin>
+
 <!-- <gap:plugin name="com.cordova.plugins.sms" /> -->
 <!-- <gap:plugin name="info.ivanezko.phonegap.smsplugin" />-->
 <!-- Solo android: Envia y Recibe -->
 <!-- <gap:plugin name="tr.bel.mamak.sms_plagin" />-->
 
-<!-- Third party plugins -->
+<!--
+Third party plugins -->
 <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
+<!--
+<gap:plugin name="com.phonegap.plugins.barcodescanner" />
+-->
 
 <!-- Define app icon for each platform. -->
 <icon src="icon.png" />
