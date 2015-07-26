@@ -48,7 +48,7 @@ var firebase = new Firebase('https://' + config.firebase + '.firebaseio.com/');
 //var markersRef = firebase.child('maps/' + mapId);
 var markersRef = firebase.child('maps/demo');
 var markers = {};
-
+var map;
 var User_Lat = localStorage.getItem("User_Lat");
 var User_Lon = localStorage.getItem("User_Lon");
 
@@ -57,6 +57,15 @@ if(User_Lat == null && User_Lon == null)
 User_Lat = window.coords_lat;
 User_Lon = window.coords_lon;
 } 
+
+
+map = plugin.google.maps.Map.getMap(document.getElementById("map"), myOptions);
+map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+
+function onMapReady() {
+alert("Mapa Listo");
+}
+
 
 function initialize() { 
 var GetLatLon_F_DU = new google.maps.LatLng(User_Lat, User_Lon);
@@ -71,18 +80,12 @@ center: centerMap
 
 //map = new google.maps.Map(document.getElementById("map"), myOptions);
 
-var div = document.getElementById("map");
-map = plugin.google.maps.Map.getMap(div, myOptions);
-map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
-
 infowindow = new google.maps.InfoWindow({
 maxWidth: 500,
 content: "Cargando..."
 });
 
-function onMapReady() {
-alert("Mapa Listo");
-}
+
 
 var MycontentString = '<div id="content">'+
 '<div id="siteNotice">'+
