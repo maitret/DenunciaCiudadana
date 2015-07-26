@@ -77,8 +77,8 @@ mapTypeId: google.maps.MapTypeId.ROADMAP,
 center: centerMap
 };
 
-//map = new google.maps.Map(document.getElementById("map"), myOptions);
-map = plugin.google.maps.Map.getMap(document.getElementById("map"), myOptions);
+map = new google.maps.Map(document.getElementById("map"), myOptions);
+//map = plugin.google.maps.Map.getMap(document.getElementById("map"), myOptions);
 
 infowindow = new google.maps.InfoWindow({
 maxWidth: 500,
