@@ -73,12 +73,17 @@ center: centerMap
 
 var div = document.getElementById("map");
 map = plugin.google.maps.Map.getMap(div, myOptions);
-//map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
+map.addEventListener(plugin.google.maps.event.MAP_READY, onMapReady);
 
 infowindow = new google.maps.InfoWindow({
 maxWidth: 500,
 content: "Cargando..."
 });
+
+function onMapReady() {
+alert("Mapa Listo");
+}
+
 
 
 var MycontentString = '<div id="content">'+
