@@ -116,7 +116,7 @@ var json = "";
 	
 function update_clientes()
 {
-$.getJSON("http://mensajerus.com/pe/code/info_clientes.json.php", {ajax: 'true'}, function (j) {
+$.getJSON("http://enprimerasplanas.com/pe/code/info_clientes.json.php", {ajax: 'true'}, function (j) {
 //j = JSON.parse(m);
 var data_ajax = j['clientes'];
 var count_data_ajax = data_ajax.length;
@@ -193,7 +193,7 @@ map: map,
 title: uuid,
 //zIndex: sites[3],
 icon: icon_alerta,
-//icon: 'https://app.sanzon.mx/img/Marcador.png',
+//icon: 'img/Marcador.png',
 html: popupContent,
 });
 
@@ -214,7 +214,7 @@ bounds.extend(siteLatLng);
 map.fitBounds(bounds); 
 map.setZoom(map.getZoom() - 2);
 //google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) { if (this.getZoom() > 17) { this.setZoom(17); } }); 
-
+infowindow.open(map,window.marker[uuid]);
 } else { }
 
 }
