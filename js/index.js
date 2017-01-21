@@ -121,3 +121,5 @@ carga_app: function(){
 
 }
 };
+
+app.initialize();
