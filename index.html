@@ -91,7 +91,7 @@ window.localStorage.setItem("User_Lon", position.coords.longitude);
 function onError(error) {
 alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 var geo_info = "pos_ec=" + error.code + "&pos_em=" + error.message + "";
-localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&token_push="+localStorage.getItem("token_push"));
+localStorage.setItem("info_cliente", "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&token_push="+localStorage.getItem("registrationId"));
 }
 
 $("#loading_principal").html("");
