@@ -61,13 +61,62 @@ var app = {
 initialize: function() {
 this.bindEvents();
 },
+// 'load', 'deviceready', 'offline', and 'online'.
 bindEvents: function() {
 document.addEventListener('deviceready', this.onDeviceReady, false);
 },
 onDeviceReady: function() {
-app.receivedEvent('deviceready');
+app.setupPush();
+app.carga_app();
 },
-receivedEvent: function(id) {
-console.log('Received Event: ' + id);
+setupPush: function() {
+var push = PushNotification.init({
+"android": {
+"senderID": "438952115950"
+},
+"ios": {
+alert: "true",
+badge: "true",
+sound: "true",
+clearBadge: "true"
+},
+"windows": {}
+});
+
+push.on('registration', function(data) {
+//alert(JSON.stringify("reg: "+data));
+//$("#info_device").append(JSON.stringify(data));
+//console.log('registration event: ' + data.registrationId);
+var oldRegId = localStorage.getItem('registrationId');
+if (oldRegId !== data.registrationId) {
+localStorage.setItem('registrationId', data.registrationId);
+window.localStorage.setItem("token_push", JSON.stringify(data));
+}
+
+});
+push.on('error', function(e) {
+//alert(JSON.stringify("error: "+e));
+//$("#info_device").append(JSON.stringify(e));
+//window.localStorage.setItem("token_push", JSON.stringify(e));
+});
+
+push.on('notification', function(data) {
+//$("#info_device").append(JSON.stringify(data));
+//window.localStorage.setItem("token_push", JSON.stringify(data));
+if(typeof GetPushNotif == 'function') {
+window.GetPushNotif(data);
+} else {
+window.GetPushNotif = data;
+}
+/* navigator.notification.alert(
+data.message,         // message
+null,                 // callback
+data.title,           // title
+'Ok'                  // buttonName
+); */
+});
+},
+carga_app: function(){
+
 }
 };
