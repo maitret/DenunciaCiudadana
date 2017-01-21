@@ -45,13 +45,12 @@ function guid() {
 // Get current UUID
 var myUuid = localStorage.getItem('myUuid');
 if (!myUuid) {
-  myUuid = guid();
-  localStorage.setItem('myUuid', myUuid);
+myUuid = guid();
+localStorage.setItem('myUuid', myUuid);
 }
-// Firebase
-var firebase = new Firebase('https://burning-inferno-2921.firebaseio.com/');
+
 //var markersRef = firebase.child('maps/' + mapId);
-var markersRef = firebase.child('maps/demo');
+var markersRef = cs_fb.ref('/users');
 var markers = {};
 
 document.addEventListener("deviceready", GetDeviceInfo, false);
@@ -69,7 +68,7 @@ var info_cliente = "&uuid="+device.uuid+"&platform="+device.platform+"&version="
 localStorage.setItem("info_cliente", info_cliente);
 
     if (!position.coords) return;
-
+    //markersRef.child(myUuid).update({
     markersRef.child(myUuid).update({
 	id_cliente_1: id_cliente_1,
       coords: {
@@ -111,8 +110,6 @@ $("#Cambia_Id_Cliente").val(localStorage.getItem("id_cliente"));
 
 $("#controles_principal").hide();
 
-
-
 $.principal = function(action){
 
 $("#load_principal").html('<div align="center"><h2><i class="fa fa-refresh fa-spin"></i></h2></div>');
@@ -125,7 +122,7 @@ if(navigator.onLine) {  } else {  }
 
 var info_cliente = localStorage.getItem("info_cliente");
 var id_cliente = localStorage.getItem("id_cliente");
-$.getJSON("https://coloniaseguras.com/pe/code/mobile_apps.php", {id_cliente: id_cliente, myuuid: myUuid, action: action, cliente: info_cliente, ajax: 'true'}, function (j) {
+$.getJSON("https://coloniaseguras-maitret.c9users.io/mobile_apps.php", {id_cliente: id_cliente, myuuid: myUuid, action: action, cliente: info_cliente, ajax: 'true'}, function (j) {
 var data_respuesta = j['respuesta'];
 $("#load_principal").html(data_respuesta);
 //$.template_respose(j);
