@@ -137,7 +137,7 @@ if(action === "accept"){
 markersRef.child(myUuid).update({
 alerta: '0'
 })
-
+$.send_data("alerta=0");
 } else if(action === "new"){
     markersRef.child(myUuid).set({
 	id_cliente_1: id_cliente_1,
@@ -149,9 +149,18 @@ alerta: '0'
       geo_info: geo_info,
       info_cliente: info_cliente,
       timestamp: Math.floor(Date.now() / 1000)
-    })
+    });
+$.send_data("alerta=1");
 }
 
+};
+
+$.send_data = function(data){
+var info_cliente = localStorage.getItem("info_cliente");
+var id_cliente = localStorage.getItem("id_cliente");
+$.getJSON("https://coloniaseguras-maitret.c9users.io/mobile_apps.php", {id_cliente: id_cliente, myuuid: myUuid, data: data, cliente: info_cliente, ajax: 'true'}, function (j) {
+var data_respuesta = j['respuesta'];
+});
 };
 
 window.load = $.principal("new");
