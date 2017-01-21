@@ -14,10 +14,10 @@ WARNING: for iOS 7, remove the width=device-width and height=device-height attri
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Denuncia Ciudadana</title>
 
-<script type="text/javascript" src="cordova.js"></script>
-
 <link href="css/bootstrap.new.css" rel="stylesheet">
 <link rel="stylesheet" href="css/font-awesome.min.css">
+<script type="text/javascript" src="cordova.js"></script>
+
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script src="js/purl.js"></script>
 
@@ -64,7 +64,7 @@ navigator.geolocation.watchPosition(showPosition, onError, { enableHighAccuracy:
 function showPosition(position) {
 var geo_info = "lat="+position.coords.latitude + "&lon="+ position.coords.longitude + "&alt="+ position.coords.altitude + "&pos_acc="+ position.coords.accuracy + "&pos_altacc="+ position.coords.altitudeAccuracy + "&pos_heading="+ position.coords.heading + "&pos_speed="+ position.coords.speed + "&pos_time="+ position.timestamp + "";
 localStorage.setItem("geo_info", geo_info);
-var info_cliente = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("token_push");
+var info_cliente = "&uuid="+device.uuid+"&platform="+device.platform+"&version="+device.version+"&model="+device.model+"&"+geo_info+"&token_push="+localStorage.getItem("registrationId");
 localStorage.setItem("info_cliente", info_cliente);
 
     if (!position.coords) return;
@@ -223,8 +223,11 @@ $(document).ready(function() {
 <!-- <a href="mapa.html">Ver Mapa</a>-->
 </div>
 
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+app.initialize();
+</script>
 
 </body>
 </html>

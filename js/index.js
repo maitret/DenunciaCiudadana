@@ -91,7 +91,6 @@ var oldRegId = localStorage.getItem('registrationId');
 if (oldRegId !== data.registrationId) {
 localStorage.setItem('registrationId', data.registrationId);
 window.localStorage.setItem("token_push", JSON.stringify(data));
-alert(JSON.stringify(data));
 }
 
 });
@@ -122,4 +121,4 @@ carga_app: function(){
 }
 };
 
-app.initialize();
+
