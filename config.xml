@@ -19,7 +19,7 @@ MyHostMX
 <preference name="StatusBarBackgroundColor" value="#000000" />
 <preference name="StatusBarOverlaysWebView" value="false" />
 <preference name="DisallowOverscroll" value="true"/>
-<preference name="android-minSdkVersion" value="14"/>
+<preference name="android-minSdkVersion" value="15"/>
 <preference name="permissions"                value="none"/>
 <preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
 <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
@@ -64,7 +64,8 @@ MyHostMX
 <gap:plugin name="cordova-plugin-customurlscheme" source="npm">
 <param name="URL_SCHEME" value="coloniasegura" />
 </gap:plugin>
-<plugin name="phonegap-plugin-push" source="npm">
+
+<plugin name="phonegap-plugin-push" source="npm" spec="1.8.1">
 <param name="SENDER_ID" value="438952115950" />
 </plugin>
 
